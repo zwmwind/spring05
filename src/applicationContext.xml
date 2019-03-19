@@ -8,10 +8,18 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="mythow" class="com.zwm.advice.MyThow"/>
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="mypoint" expression="execution(* com.zwm.test.Demo.demo01())"/>-->
+        <!--<aop:advisor advice-ref="mythow" pointcut-ref="mypoint"/>-->
+    <!--</aop:config>-->
+
+    <!--<bean id="demo" class="com.zwm.test.Demo"/>-->
+
+    <bean id="myarround" class="com.zwm.advice.MyArround"/>
     <aop:config>
         <aop:pointcut id="mypoint" expression="execution(* com.zwm.test.Demo.demo01())"/>
-        <aop:advisor advice-ref="mythow" pointcut-ref="mypoint"/>
-    </aop:config>
+        <aop:advisor advice-ref="myarround" pointcut-ref="mypoint"/>
+     </aop:config>
 
-    <bean id="demo" class="com.zwm.test.Demo"/>
+    <bean class="com.zwm.test.Demo" id="demo"/>
 </beans>
